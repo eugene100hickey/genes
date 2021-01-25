@@ -23,6 +23,6 @@ pardinas <- function() {
     dplyr::distinct()
   names(all_sz_genes) <- "genes"
   all_sz_genes %>%
-    mutate(genes = stringr::str_trim(genes)) %>%
+    dplyr::mutate(genes = stringr::str_trim(genes)) %>%
        tibble::as_tibble()
 }
