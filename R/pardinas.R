@@ -20,8 +20,9 @@ pardinas <- function() {
     stringr::str_split(",") %>%
     unlist() %>%
     as.data.frame() %>%
-    dplyr::distinct() %>%
-    stringr::str_trim()
+    dplyr::distinct()
   names(all_sz_genes) <- "genes"
-  all_sz_genes %>% tibble::as_tibble()
+  all_sz_genes %>%
+    mutate(genes = stringr::str_trim(genes)) %>%
+       tibble::as_tibble()
 }
