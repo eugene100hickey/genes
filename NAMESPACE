@@ -3,4 +3,5 @@
 export("%>%")
 export(pardinas)
 export(pardinas_snp)
+export(ripke_snp)
 importFrom(magrittr,"%>%")
