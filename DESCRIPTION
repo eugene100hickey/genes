@@ -17,9 +17,10 @@ URL: https://github.com/eugene100hickey/genes
 BugReports: https://github.com/eugene100hickey/genes/issues
 Imports: 
     pins,
-    readxl,
     httr,
     stringr,
     tibble,
     dplyr,
-    magrittr
+    magrittr,
+    janitor,
+    xlsx
