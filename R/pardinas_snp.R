@@ -7,7 +7,7 @@
 pardinas_snp <- function() {
   url <- "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5918692/bin/NIHMS958804-supplement-Supplementary_Table.xlsx"
   httr::GET(url, httr::write_disk(temp_file <- tempfile(fileext = ".xlsx"))) # downloads the .xlsx file
-  df <- xlsx::read.xlsx(temp_file, sheetName = "Supp Table 4", startRow = 8) # reads into a dataframe. First six rows of the excel file are just header
+  df <- readxl::read_excel(temp_file, sheet = "Supp Table 4", skip = 7) # reads into a dataframe. First six rows of the excel file are just header
   unlink(temp_file)     # deletes the temporary file
   pins::pin(x = df, name = "pardinas_snps")
 

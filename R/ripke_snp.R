@@ -13,10 +13,8 @@ ripke_snp <- function() {
                               colIndex = 1:12) # reads into a dataframe from brain sheet. Column headers are in the first row
   df_brain$eQTL.gene <- as.character(df_brain$eQTL.gene)
   df_brain$P.eQTL. <- as.character(df_brain$P.eQTL.)
-  df_blood <- xlsx::read.xlsx(temp_file,
-                              sheetName = "blood eQTL",
-                              startRow = 1,
-                              colIndex = 1:12) # reads into a dataframe from blood sheet. Column headers are in the first row
+  df_blood <- readxl::read_excel(temp_file,
+                              sheet = "blood eQTL") # reads into a dataframe from blood sheet. Column headers are in the first row
   df <- dplyr::bind_rows(df_brain, df_blood)
   unlink(temp_file)     # deletes the temporary file
   pins::pin(x = df, name = "ripke_snps")
