@@ -7,12 +7,10 @@
 ripke_snp <- function() {
   url <- "https://static-content.springer.com/esm/art%3A10.1038%2Fnature13595/MediaObjects/41586_2014_BFnature13595_MOESM77_ESM.xlsx"
   httr::GET(url, httr::write_disk(temp_file <- tempfile(fileext = ".xlsx"))) # downloads the .xlsx file
-  df_brain <- xlsx::read.xlsx(temp_file,
-                              sheetName = "brain eQTL",
-                              startRow = 1,
-                              colIndex = 1:12) # reads into a dataframe from brain sheet. Column headers are in the first row
-  df_brain$eQTL.gene <- as.character(df_brain$eQTL.gene)
-  df_brain$P.eQTL. <- as.character(df_brain$P.eQTL.)
+  df_brain <- readxl::read_excel(temp_file,
+                              sheet = "brain eQTL") # reads into a dataframe from brain sheet. Column headers are in the first row
+  df_brain$eQTL.gene <- as.character(df_brain$`eQTL gene`)
+  df_brain$P.eQTL. <- as.character(df_brain$`Prob(eQTL)`)
   df_blood <- readxl::read_excel(temp_file,
                               sheet = "blood eQTL") # reads into a dataframe from blood sheet. Column headers are in the first row
   df <- dplyr::bind_rows(df_brain, df_blood)

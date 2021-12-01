@@ -16,7 +16,7 @@ pardinas <- function() {
   # makes sz_genes, a dataframe with a single column of the CLOZUK genes
   #######################################################################
 
-  all_sz_genes <- df$Gene.s..tagged %>%
+  all_sz_genes <- df$`Gene(s) tagged` %>%
     stringr::str_split(",") %>%
     unlist() %>%
     as.data.frame() %>%

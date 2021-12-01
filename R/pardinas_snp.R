@@ -16,7 +16,7 @@ pardinas_snp <- function() {
   # makes sz_snps, a dataframe with a column of the CLOZUK snps
   #######################################################################
 
-  all_sz_genes <- df %>% dplyr::select(`Index.SNP..dbSNP.b141.`, `Gene.s..tagged`)
+  all_sz_genes <- df %>% dplyr::select(`Index SNP (dbSNP b141)`, `Gene(s) tagged`)
   names(all_sz_genes) <- c("snps", "genes")
   all_sz_genes
 }
